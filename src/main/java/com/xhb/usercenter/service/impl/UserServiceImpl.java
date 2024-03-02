@@ -35,7 +35,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User>
     /*
     * 加盐
     * */
-    private static final String SALT = "yupi";
+    private static final String SALT = "XHB";
 
 
     @Override
@@ -51,7 +51,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User>
             throw new BusinessException(ErrorCode.PARAMS_ERROR,"密码过短");
         }
         if (planetCode.length() > 5){
-            throw new BusinessException(ErrorCode.PARAMS_ERROR,"星球编号过长");
+            throw new BusinessException(ErrorCode.PARAMS_ERROR,"编号过长");
         }
         // 账户不能包含特殊字符
         String  validPattern = "[`~!@#$%^&*()+=|{}':;',\\\\[\\\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：’“”。，、？ ]";

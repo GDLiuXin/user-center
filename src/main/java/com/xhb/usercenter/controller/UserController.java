@@ -49,9 +49,7 @@ public class UserController {
         Long result =  userService.userResister(userAccount, userPassword, checkPassword,planetCode);
         return ResultUtils.success(result);
     }
-    /**
-     * 用户登陆
-     */
+
     @PostMapping("/login")
     public BaseResponse<User> userLogin(@RequestBody UserLoginRequest userLoginRequest,  HttpServletRequest request){
         if (request == null) {
@@ -99,9 +97,13 @@ public class UserController {
 
     /**
      * 查询用户
+     * @param username
+     * @param request
+     * @return
      */
     @GetMapping("/search")
     public BaseResponse<List<User>> searchUsers(String username, HttpServletRequest request){
+
         if(!isAdmin(request)){
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
@@ -109,12 +111,18 @@ public class UserController {
         if (StringUtils.isNotBlank(username)){
             queryWrapper.like("username",username);
         }
+
         List<User> userList = userService.list(queryWrapper);
         List<User> list = userList.stream().map(user -> userService.getSafetyUser(user)).collect(Collectors.toList());
         return ResultUtils.success(list);
+
     }
+
     /**
      * 删除用户
+     * @param id
+     * @param request
+     * @return
      */
     @PostMapping("/delete")
     public BaseResponse<Boolean> deleteUsers(@RequestBody long id, HttpServletRequest request){

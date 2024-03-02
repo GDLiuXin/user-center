@@ -3,6 +3,7 @@ package com.xhb.usercenter.service;
 import com.xhb.usercenter.model.domain.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
@@ -17,7 +18,7 @@ public class UserServiceTest {
     @Test
     public void testAddUser(){
         User user = new User();
-        user.setUsername("dogYupi");
+        user.setUsername("xiehaobin");
         user.setUserAccount("123");
         user.setAvatarUrl("https://www.baidu.com/");
         user.setGender(0);
@@ -30,31 +31,31 @@ public class UserServiceTest {
     }
     @Test
     void userResister() {
-        String userAccount ="yupi";
+        String userAccount ="xiehaobin";
         String userPassword = "";
         String checkPassword = "123456";
         String planetCode = "1";
         long result = userService.userResister(userAccount,userPassword,checkPassword,planetCode);
         Assertions.assertEquals(-1,result);
-        userAccount = "yu";
+        userAccount = "xi";
         result = userService.userResister(userAccount,userPassword,checkPassword,planetCode);
         Assertions.assertEquals(-1,result);
-        userAccount ="yupi";
+        userAccount ="haobin";
         userPassword = "123456";
         result = userService.userResister(userAccount,userPassword,checkPassword,planetCode);
         Assertions.assertEquals(-1,result);
-        userAccount ="yu pi";
+        userAccount ="hao bin";
         userPassword = "12345678";
         result = userService.userResister(userAccount,userPassword,checkPassword,planetCode);
         Assertions.assertEquals(-1,result);
         checkPassword = "123456789";
         result = userService.userResister(userAccount,userPassword,checkPassword,planetCode);
         Assertions.assertEquals(-1,result);
-        userAccount ="dogyupi";
+        userAccount ="xiehaobin";
         userPassword = "12345678";
         result = userService.userResister(userAccount,userPassword,checkPassword,planetCode);
         Assertions.assertEquals(-1,result);
-        userAccount ="yupi";
+        userAccount ="xiehaobin";
         result = userService.userResister(userAccount,userPassword,checkPassword,planetCode);
         Assertions.assertTrue(result < 0);
 
