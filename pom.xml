@@ -92,9 +92,15 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.7.2</version>
                 <configuration>
-                    <skip>true</skip>
+                    <!-- <skip>true</skip> -->
+                    <!--  自己的启动类地址   -->
+                    <!--<mainClass>com/xhb/usercenter/UserCenterApplication.java</mainClass>-->
                     <excludes>
                         <exclude>
                             <groupId>org.projectors</groupId>
